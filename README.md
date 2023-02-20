@@ -1,10 +1,10 @@
-# algorithmicsGarciaDiazVicenteUO42478
+# algorithmicsFernándezNoriegaChristian
 Repository for the Algorithmics course at the School of Computer Engineering of the University of Oviedo
 
 ## Information
-**Student**: Vicente García Díaz
+**Student**: Christian Fernández Noriega
 
-**Year**: 2022
+**Year**: 2023
 
-**Repository URL**: https://github.com/vicegd/algorithmicsGarciaDiazVicenteUO42478
+**Repository URL**: https://github.com/uo282650/algorithmicsFern-ndezNoriegaUO282650
 
