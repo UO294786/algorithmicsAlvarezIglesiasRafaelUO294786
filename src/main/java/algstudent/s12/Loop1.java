@@ -5,8 +5,8 @@ public class Loop1 {
 	public static long loop1(long n) {
 		long cont = 0;
 		long n1 = 1;
-		while (n1 <= n * n) {
-			for (long i = 1; i <= 2 * n; i += 3)
+		while (n1 <= n * n) { //O(log(n))
+			for (long i = 1; i <= 2 * n; i += 3) //O(n)
 				cont++;
 			n1 = 3 * n1;
 		}
@@ -24,7 +24,7 @@ public class Loop1 {
 			t1 = System.currentTimeMillis();
 
 			for (int repetitions = 1; repetitions <= nTimes; repetitions++)
-				c = loop1(n);
+				c = loop1(n); //Loop1 has a complexity of O(n*log(n))
 
 			t2 = System.currentTimeMillis();
 

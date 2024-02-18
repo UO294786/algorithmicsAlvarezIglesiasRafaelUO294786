@@ -1,12 +1,13 @@
 package algstudent.s12;
 
-public class Loop4 {
+public class Loop7 {
 
-	public static long loop4(int n) {
+	public static long loop7(int n) {
 		long cont = 0;
 		for (int i = 1; i <= n; i++) //O(n)
 			for (int j = 1; j <= i; j++) //O(n)
-				for (int k = 1; k <= j; k++) //O(n)
+				for (int k = 1; k <= n; k++) //O(n)
+					for (int l = 1; l <= n; l++) //O(n)
 					cont++;
 		return cont;
 
@@ -24,7 +25,7 @@ public class Loop4 {
 			t1 = System.currentTimeMillis();
 
 			for (int repetitions = 1; repetitions <= nTimes; repetitions++)
-				c = loop4(n); //Loop4 has a complexity of O(n^3)
+				c = loop7(n); //Loop7 has a complexity of O(n^4)
 
 			t2 = System.currentTimeMillis();
 

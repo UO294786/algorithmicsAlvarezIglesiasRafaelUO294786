@@ -5,9 +5,9 @@ public class Loop3 {
 	public static long loop3(long n) {
 		long cont = 0;
 		long i = 1;
-		while (i <= 2 * n) {
-			for (long j = i; j >= 0; j -= 2)
-				for (long k = 1; k <= n; k *= 2)
+		while (i <= 2 * n) { //O(n)
+			for (long j = i; j >= 0; j -= 2) //O(n)
+				for (long k = 1; k <= n; k *= 2) //O(log(n))
 					cont++;
 			i++;
 		}
@@ -26,7 +26,7 @@ public class Loop3 {
 			t1 = System.currentTimeMillis();
 
 			for (int repetitions = 1; repetitions <= nTimes; repetitions++)
-				c = loop3(n);
+				c = loop3(n); //Loop3 has a complexity of O(n^2*log(n))
 
 			t2 = System.currentTimeMillis();
 			System.out.println(n + "\t" + (t2 - t1) + "\t" + nTimes + "\t\t" + c);
