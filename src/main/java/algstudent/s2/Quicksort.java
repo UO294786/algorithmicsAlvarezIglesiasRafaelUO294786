@@ -17,6 +17,39 @@ public class Quicksort {
 		return center;
 	}
 	
+	public static void mquicksort(int[] a, int k) {
+		mquicksort(a, 0, a.length-1, k);
+	}
+	
+	public static void mquicksort(int[] a, int left, int right, int k) {
+		if (right - left <= k) {
+	        Insertion.qinsertion(a, left, right);
+	    } else {
+	        int i = left;
+	        int j = right - 1;
+	        int pivot;
+
+	        if (left < right) {
+	            int center = median_of_three(a, left, right);
+	            if ((right - left) >= 3) {
+	                pivot = a[center];
+	                Vector.interchange(a, center, right);
+
+	                do {
+	                    while (a[i] <= pivot && i < right) i++;
+	                    while (a[j] >= pivot && j > left) j--;
+	                    if (i < j) Vector.interchange(a, i, j);
+	                } while (i < j);
+
+	                Vector.interchange(a, i, right);
+	                mquicksort(a, left, i - 1, k);
+	                mquicksort(a, i + 1, right, k);
+	            }
+	        }
+	    }
+	}
+	
+	
 	public static void quicksort(int[] a) {
 		quicksort(a, 0, a.length-1);
 	}

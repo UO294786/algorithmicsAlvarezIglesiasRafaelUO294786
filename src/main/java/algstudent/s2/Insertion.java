@@ -24,6 +24,24 @@ public class Insertion {
 			a[j+1] = pivot;
 		}
 	}
+	
+	/* Sorting by the Insertion method */
+	public static void qinsertion(int[] a, int l, int r) {
+		int j;
+		int pivot;
+		
+		for (int i =  l; i < r; i++) {
+			pivot = a[i];
+			j = i-1;
+			
+			while (j >= l && pivot < a[j]) {
+				a[j+1] = a[j];
+				j--;
+			}
+			
+			a[j+1] = pivot;
+		}
+	}
 
 	public static void main(String arg[]) {
 		int n = Integer.parseInt(arg[0]); //size of the problem
