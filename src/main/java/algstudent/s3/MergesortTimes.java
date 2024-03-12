@@ -10,7 +10,7 @@ public class MergesortTimes {
 		String opcion = arg[0];
 		System.out.println(opcion);
 		
-		for (int n = 250000; n <= 1000000000; n *= 2) {
+		for (int n = 31250; n <= 1000000000; n *= 2) {
 			v = new int[n];
 
 			if (opcion.compareTo("ordered") == 0)

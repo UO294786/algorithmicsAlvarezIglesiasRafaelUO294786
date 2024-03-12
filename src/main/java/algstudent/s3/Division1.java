@@ -23,6 +23,7 @@ public class Division1 {
 		long t1,t2 = 0;
 		int nTimes = Integer.parseInt (arg [0]);
 		
+		System.out.println(true);
 		for (int n=1;n<=10000000;n*=2)
 		 {
 			 t1 = System.currentTimeMillis ();
