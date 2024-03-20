@@ -1,4 +1,4 @@
-package algstudent.examples;
+package algstudent.examples.Huffman;
 
 import static org.junit.Assert.assertEquals;
 import java.util.Map;

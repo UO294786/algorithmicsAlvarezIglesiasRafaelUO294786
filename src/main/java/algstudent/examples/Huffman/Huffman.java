@@ -1,4 +1,4 @@
-package algstudent.examples;
+package algstudent.examples.Huffman;
 
 import java.io.IOException;
 import java.nio.file.Files;
