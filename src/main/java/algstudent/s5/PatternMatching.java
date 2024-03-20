@@ -2,13 +2,19 @@ package algstudent.s5;
 
 public class PatternMatching {
 
+	private boolean [][] matches;
+	private String word;
+	
 	public PatternMatching(String text) {
-		// TODO Auto-generated constructor stub
+		this.word = text;
 	}
 
 	public void printsTable() {
-		// TODO Auto-generated method stub
-		
+		for (int i = 0; i < matches.length; i++) {
+			for (int j = 0; j < matches[i].length; j++)
+				System.out.print(matches[i][j] ? "T":"F" + " ");
+			System.out.println();
+		}
 	}
 
 	public Object checkPattern(String string) {
