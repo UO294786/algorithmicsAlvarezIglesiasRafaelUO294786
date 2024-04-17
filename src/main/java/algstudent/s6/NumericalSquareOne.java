@@ -58,7 +58,7 @@ public class NumericalSquareOne {
 	//SOLUTION WITH BACKTRACKING
 	private void backtracking(int row, int col) {
 		if (row == size) {
-			found = isSolution();
+			this.found = isSolution();
 			return;
 		}
 		
