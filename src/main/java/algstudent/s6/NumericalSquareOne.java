@@ -40,7 +40,7 @@ public class NumericalSquareOne {
 	public static void main(String[] args) {
 		NumericalSquareOne sq = new NumericalSquareOne();
 		
-		sq.solve("src/main/java/algstudent/s6/tests/test01.txt");
+		sq.solve("src/main/java/algstudent/s6/tests/test03.txt");
 	}
 	
 	public void solve(String path) {
@@ -48,8 +48,10 @@ public class NumericalSquareOne {
 
 		backtracking(0, 0);
         
-        if (found) 
+        if (found) {
             System.out.println("SOLUTION FOUND");
+			printMatrix(board);
+        }
         else 
             System.out.println("No solution found");
         
@@ -75,9 +77,9 @@ public class NumericalSquareOne {
 		}
 		
 		else {
-			while (board[row][col] < MAX_NUM && !found) {	
+			for (int i = MIN_NUM; i <= MAX_NUM && !found; i++) {	
 				
-				board[row][col]++;
+				board[row][col] = i;
 				
 				int nRow = row, nCol = col;
 				
@@ -87,7 +89,10 @@ public class NumericalSquareOne {
 					nRow = row + 1;
 				} else nCol = col + 1;
 
-				backtracking(nRow, nCol);
+				
+				if (isRowSolution(row) && isColSolution(col))
+					backtracking(nRow, nCol);
+				
 			}
 		}
 	}
@@ -97,22 +102,27 @@ public class NumericalSquareOne {
 	private boolean isSolution() {
 		boolean res = true;
 		
-		for (int i = 0; i < size; i++) 
-			res = res && isRowSolution(i) && isColSolution(i);
+		for (int i = 0; i < size; i++) {
+			res = isRowSolution(i) && isColSolution(i);
+			
+			if (!res) return false;
+		}
 		
-		return res;
+		return true;
 	}
 	
 	private boolean isRowSolution(int row) {
 		int opC = 0, res = board[row][0];
 		for (int j = 1; j < board.length; j++) 
 			switch (rowOps[row][opC++]) {
-		        case 'M' -> res *= board[row][j];
-		        case 'S' -> res += board[row][j];
-		        case 'R' -> res -= board[row][j];
+		        case M -> res *= board[row][j];
+		        case S -> res += board[row][j];
+		        case R -> res -= board[row][j];
 		        default -> {
 		            if (board[row][j] == 0)
 		                return false;
+		            if (res % board[row][j] != 0) return false;
+		            
 		            res /= board[row][j];
 		        }
 			}
@@ -124,12 +134,15 @@ public class NumericalSquareOne {
 		int opC = 0, res = board[0][col];
 		for (int j = 1; j < board.length; j++) 
 			switch (colOps[col][opC++]) {
-		        case 'M' -> res *= board[j][col];
-		        case 'S' -> res += board[j][col];
-		        case 'R' -> res -= board[j][col];
+		        case M -> res *= board[j][col];
+		        case S -> res += board[j][col];
+		        case R -> res -= board[j][col];
 		        default -> {
 		            if (board[j][col] == 0)
 		                return false;
+		            
+		            if (res % board[j][col] != 0) return false;
+		            
 		            res /= board[j][col];
 		        }
 			}

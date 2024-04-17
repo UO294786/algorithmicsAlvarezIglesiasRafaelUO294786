@@ -7,7 +7,7 @@ public class NumericalSquareOneTimes {
 		long t1, t2;
 		NumericalSquareOne sq = new NumericalSquareOne();
 		
-		for (int n = 1; n <= 7; n++) {
+		for (int n = 0; n <= 7; n++) {
 			String path = "src/main/java/algstudent/s6/tests/test0" + String.valueOf(n) + ".txt";
 			t1 = System.currentTimeMillis();
 			
