@@ -44,6 +44,8 @@ public class NumericalSquareOne {
 	}
 	
 	public void solve(String path) {
+		this.found = false;
+		
 		readFromFile(path);
 
 		backtracking(0, 0);
@@ -54,13 +56,17 @@ public class NumericalSquareOne {
         }
         else 
             System.out.println("No solution found");
+        System.out.println("NoOP value: " + String.valueOf(isNoOp()));
         
     }
 	
 	//SOLUTION WITH BACKTRACKING
 	private void backtracking(int row, int col) {
 		if (row == size) {
-			this.found = isSolution();
+			this.found = isNoOp() && isSolution();
+			
+			printMatrix(board);
+			
 			return;
 		}
 		
@@ -113,7 +119,12 @@ public class NumericalSquareOne {
 	
 	private boolean isRowSolution(int row) {
 		int opC = 0, res = board[row][0];
-		for (int j = 1; j < board.length; j++) 
+		
+		if (res == NO_OP) return true;
+		
+		for (int j = 1; j < board.length; j++) {
+			if (board[row][j] == NO_OP) return true;
+			
 			switch (rowOps[row][opC++]) {
 		        case M -> res *= board[row][j];
 		        case S -> res += board[row][j];
@@ -126,13 +137,19 @@ public class NumericalSquareOne {
 		            res /= board[row][j];
 		        }
 			}
+		}
 		
 		return res == rowRes[row];
 	}
 	
 	private boolean isColSolution(int col) {
 		int opC = 0, res = board[0][col];
-		for (int j = 1; j < board.length; j++) 
+		
+		if (res == NO_OP) return true;
+		
+		for (int j = 1; j < board.length; j++) {
+			if (board[j][col] == NO_OP) return true;
+		
 			switch (colOps[col][opC++]) {
 		        case M -> res *= board[j][col];
 		        case S -> res += board[j][col];
@@ -146,8 +163,17 @@ public class NumericalSquareOne {
 		            res /= board[j][col];
 		        }
 			}
+		}
 		
 		return res == colRes[col];
+	}
+	
+	private boolean isNoOp() {
+		for (int i = 0; i < size; i++)
+			for (int j = 0; j < size; j++)
+				if (board[i][j] == NO_OP) return false;
+		
+		return true;
 	}
 	
 	// --- Utils ---
