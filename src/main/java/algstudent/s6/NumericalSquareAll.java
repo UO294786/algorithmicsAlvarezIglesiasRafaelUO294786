@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class NumericalSquareOne {
+public class NumericalSquareAll {
 	
 	private static final String Q_MARK = "?";
 	private static final String EQ_SIGN = "=";
@@ -34,37 +34,31 @@ public class NumericalSquareOne {
 	
 	private boolean [][] blocked;
 	
-	private boolean found;
-	
+	private int solCount;
 	
 	public static void main(String[] args) {
-		NumericalSquareOne sq = new NumericalSquareOne();
+		NumericalSquareAll sq = new NumericalSquareAll();
 		
-		sq.solve("src/main/java/algstudent/s6/tests/test07.txt");
+		int res = sq.solve("src/main/java/algstudent/s6/tests/test06.txt");
+		
+		System.out.println("Number of sols: " + res);
 	}
 	
-	public void solve(String path) {
-		this.found = false;
+	public int solve(String path) {
+		solCount = 0;
 		
 		readFromFile(path);
 
-		backtracking(0, 0);
-        
-        if (found) {
-            System.out.println("SOLUTION FOUND");
-			printMatrix(board);
-        }
-        else {
-            System.out.println("No solution found");
-			printMatrix(board);
-        }
-        
+		backtracking(0,0);
+		
+		return solCount;
     }
 	
 	//SOLUTION WITH BACKTRACKING
 	private void backtracking(int row, int col) {
 		if (row == size) {
-			this.found = isNoOp() && isSolution();
+			if (isNoOp() && isSolution()) 
+				solCount++;
 			
 			return;
 		}
@@ -82,7 +76,7 @@ public class NumericalSquareOne {
 		}
 		
 		else {
-			for (int i = MIN_NUM; i <= MAX_NUM && !found; i++) {	
+			for (int i = MIN_NUM; i <= MAX_NUM; i++) {	
 				int org = board[row][col];
 				board[row][col] = i;
 				
@@ -98,8 +92,7 @@ public class NumericalSquareOne {
 				if (isRowSolution(row) && isColSolution(col))
 					backtracking(nRow, nCol);
 				
-				if (!found)
-					board[row][col] = org;
+				board[row][col] = org;
 				
 			}
 		}
