@@ -27,7 +27,7 @@ class NumericalSquaresBoard extends Node {
 	 * @param n Size of the board
 	 */
 	public NumericalSquaresBoard(int n) { //Generates an empty board
-		PyramidBoard.n = n;	 	
+		NumericalSquaresBoard.n = n;	 	
 		board = new int[n][n];
 		row = n-1;
 		column = n-1;
