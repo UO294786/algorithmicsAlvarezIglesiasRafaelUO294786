@@ -37,7 +37,7 @@ public class BranchAndBound {
 			
 			ArrayList<Node> children = node.expand(); 
 			
-			for (Node child : children)
+			for (Node child : children) 
 				if (child.isSolution()) {
 					int cost = child.getHeuristicValue();
 					if (cost < pruneLimit) {

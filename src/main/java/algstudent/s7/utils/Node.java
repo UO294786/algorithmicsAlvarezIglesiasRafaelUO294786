@@ -42,7 +42,7 @@ public abstract class Node implements Comparable<Node> {
 	 * @return True if there are equal. False otherwise
 	 */
     public boolean equals(Node n) {
-		return (n.toString().equals(toString()));
+		return (n.getID() == getID());
 	}
     
     /**
