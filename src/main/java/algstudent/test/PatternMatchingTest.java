@@ -1,4 +1,4 @@
-package algstudent.s5;
+package algstudent.test;
 
 import static org.junit.Assert.assertEquals;
 
@@ -18,32 +18,12 @@ public class PatternMatchingTest {
 	
 	@Test
 	public void test1() {
-		loadData("src/main/java/algstudent/s5/test01.txt");		
-		PatternMatching patternMatching = new PatternMatching(text);		
+		loadData("src/main/java/algstudent/test/test00.txt");		
+		PatternMatchingT patternMatching = new PatternMatchingT(text);		
 		for (int i = 0; i < patterns.size(); i++) {			
 			patternMatching.checkPattern(patterns.get(i));
 			assertEquals(expectedResults.get(i), patternMatching.checkPattern(patterns.get(i)));
-			patternMatching.printsTable();	
-		}
-	}
-	
-	@Test
-	public void test2() {
-		loadData("src/main/java/algstudent/s5/test02.txt");		
-		PatternMatching patternMatching = new PatternMatching(text);		
-		for (int i = 0; i < patterns.size(); i++) {			
-			assertEquals(expectedResults.get(i), patternMatching.checkPattern(patterns.get(i)));
-			patternMatching.printsTable();	
-		}
-	}
-	
-	@Test
-	public void test3() {
-		loadData("src/main/java/algstudent/s5/test03.txt");		
-		PatternMatching patternMatching = new PatternMatching(text);		
-		for (int i = 0; i < patterns.size(); i++) {			
-			assertEquals(expectedResults.get(i), patternMatching.checkPattern(patterns.get(i)));
-			patternMatching.printsTable();	
+			patternMatching.printsTable(patterns.get(i));	
 		}
 	}
 
@@ -74,4 +54,3 @@ public class PatternMatchingTest {
 		}
 	}
 }
-
