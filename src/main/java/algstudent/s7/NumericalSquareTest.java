@@ -80,8 +80,6 @@ public class NumericalSquareTest {
 		
 		t2 = System.currentTimeMillis();
 		
-		board.printBoard();
-		
 		result = puzzle.getBestNode() != null ? true : false; 
 
 		System.out.println("Time:" + "\t" + (t2 - t1));

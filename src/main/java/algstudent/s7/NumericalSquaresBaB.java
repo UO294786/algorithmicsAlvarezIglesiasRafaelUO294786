@@ -193,9 +193,6 @@ class NumericalSquaresBoard extends Node {
 	
 	@Override
 	public boolean isSolution() {
-		if(row == 1 && column == 1)
-			System.out.println();
-			
 		return heuristicValue == 0;
 	}
     

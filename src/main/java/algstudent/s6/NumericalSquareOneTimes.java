@@ -12,11 +12,11 @@ public class NumericalSquareOneTimes {
 		 	System.out.println("Test0" + n + ": ");
 			t1 = System.currentTimeMillis();
 			
-			sq.solve(path);
+			int nNodes = sq.solve(path);
 
 			t2 = System.currentTimeMillis();
 
-			System.out.println("Time:" + "\t" + (t2 - t1)); 
+			System.out.println("\nTime:" + "\t" + (t2 - t1) + " Number of nodes: " + nNodes); 
 		}
 	} 
 }

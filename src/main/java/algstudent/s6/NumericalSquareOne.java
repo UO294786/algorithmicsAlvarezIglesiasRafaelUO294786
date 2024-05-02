@@ -20,6 +20,7 @@ public class NumericalSquareOne {
 	private static final int MAX_NUM = 9;
 	private static final int MIN_NUM = 0;
 
+	private int nNodes = 0;
 	
 	private int size;
 	
@@ -43,8 +44,9 @@ public class NumericalSquareOne {
 		sq.solve("src/main/java/algstudent/s6/tests/test07.txt");
 	}
 	
-	public void solve(String path) {
+	public int solve(String path) {
 		this.found = false;
+		this.nNodes = 0;
 		
 		readFromFile(path);
 
@@ -52,13 +54,12 @@ public class NumericalSquareOne {
         
         if (found) {
             System.out.println("SOLUTION FOUND");
-			printMatrix(board);
         }
         else {
             System.out.println("No solution found");
-			printMatrix(board);
         }
         
+        return nNodes;
     }
 	
 	//SOLUTION WITH BACKTRACKING
@@ -95,9 +96,10 @@ public class NumericalSquareOne {
 				} else nCol = col + 1;
 
 				
-				if (isRowSolution(row) && isColSolution(col))
+				if (isRowSolution(row) && isColSolution(col)) {
+					nNodes++;
 					backtracking(nRow, nCol);
-				
+				}
 				if (!found)
 					board[row][col] = org;
 				
